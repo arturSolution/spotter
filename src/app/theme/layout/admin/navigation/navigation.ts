@@ -44,7 +44,7 @@ export const NavigationItems: NavigationItem[] = [
         id: 'import-dados-veiculo',
         title: 'Importar Dados Veiculos',
         type: 'item',
-        url: '/analytics',
+        url: '/importacao',
         icon: 'feather icon-server'
       }
     ]
@@ -60,14 +60,14 @@ export const NavigationItems: NavigationItem[] = [
         id: 'cad-ocorrencia',
         title: 'Nova Ocorrência',
         type: 'item',
-        url: '/analytics',
+        url: '/ocorrencia-form',
         icon: 'feather icon-file-text'
       },
       {
         id: 'ocorrencias',
         title: 'Ocorrências',
         type: 'item',
-        url: '/analytics',
+        url: '/ocorrencias',
         icon: 'feather icon-sidebar'
       }
     ]
