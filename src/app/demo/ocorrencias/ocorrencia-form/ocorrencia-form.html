@@ -1,8 +1,7 @@
-Importação de Veículos
 <div class="row">
   <div class="col-sm-12">
-    <app-card cardTitle="Basic Component" [options]="false">
-      <h5>Nova Ocorrência</h5>
+    <app-card cardTitle="Nova Ocorrência" [options]="false">
+      <h5>Inserir Nova Ocorrência</h5>
       <hr />
         <div class="col-12">
             <label for="inlineFormInputGroupUsername" >Placa</label>
@@ -42,6 +41,38 @@ Importação de Veículos
             </select>
         </div>
         <hr/>
+          <div layout-fill [ngStyle]="{'color': 'white'}">          
+            <div fxFlex="100" fxLayout="row" fxLayoutAlign="space-between start">
+              <input type="file" 
+                    id="file"  mat-input
+                    multiple (change)="adicionarFoto($event)" />
+            </div>          
+          </div>
+        <hr/>
+    <div layout-fill [ngStyle]="{'color': 'white'}">          
+        <div  class="container" > 
+            <div class="row justify-content-md-center" *ngIf="fotos.length>0 else fotosVazias">          
+                <div class="col-md-auto " *ngFor="let foto of fotos;" >
+                  <div class="card" style="width: 250px; height: 250px;">
+                    <img [src]="foto.nome" class="card-img-top" >
+                    <button id="btn_excluir" color="danger" class="btn btn-danger"
+                            (click)=excluirFoto(foto) >                        
+                            Excluir                        
+                      </button>                
+                  </div>                       
+            </div>        
+          </div>
+        </div>
+      </div>
+
+      <ng-template #fotosVazias >
+          <div layout-fill class="row justify-content-md-center" style="max-width: 150px;">
+            <span> Ainda não existem fotos adicionadas</span>            
+          </div>
+      </ng-template>    
+      
+
+
       <div class="row">
         <div class="col-md-10">
           <form action="javascript:">
