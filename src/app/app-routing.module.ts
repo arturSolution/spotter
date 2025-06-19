@@ -21,6 +21,19 @@ const routes: Routes = [
         loadComponent: () => import('./demo/dashboard/dash-analytics.component')
       },
       {
+        path: 'importacao',
+        loadComponent: () => import('./demo/importacao-veiculos/importacao-veiculos')
+      },
+      {
+        path: 'ocorrencias',
+        loadComponent: () => import('./demo/ocorrencias/ocorrencias')
+      },
+      {
+        path: 'ocorrencia-form',
+        loadComponent: () => import('./demo/ocorrencias/ocorrencia-form/ocorrencia-form')
+      },
+
+      /*{
         path: 'component',
         loadChildren: () => import('./demo/ui-element/ui-basic.module').then((m) => m.UiBasicModule)
       },
@@ -39,7 +52,7 @@ const routes: Routes = [
       {
         path: 'sample-page',
         loadComponent: () => import('./demo/other/sample-page/sample-page.component')
-      }
+      }*/
     ]
   },
   {

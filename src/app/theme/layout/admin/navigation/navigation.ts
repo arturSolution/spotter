@@ -19,7 +19,7 @@ export interface NavigationItem {
 }
 
 export const NavigationItems: NavigationItem[] = [
-  {
+ /* {
     id: 'navigation',
     title: 'Navigation',
     type: 'group',
@@ -33,8 +33,48 @@ export const NavigationItems: NavigationItem[] = [
         icon: 'feather icon-home'
       }
     ]
-  },
+  },*/
   {
+    id: 'importtxt',
+    title: 'Administrativo',
+    type: 'group',
+    icon: 'icon-group',
+    children: [
+      {
+        id: 'import-dados-veiculo',
+        title: 'Importar Dados Veiculos',
+        type: 'item',
+        url: '/importacao',
+        icon: 'feather icon-server'
+      }
+    ]
+  },
+
+  {
+    id: 'ocorrencias',
+    title: 'Ocorrências',
+    type: 'group',
+    icon: 'icon-group',
+    children: [
+      {
+        id: 'cad-ocorrencia',
+        title: 'Nova Ocorrência',
+        type: 'item',
+        url: '/ocorrencia-form',
+        icon: 'feather icon-file-text'
+      },
+      {
+        id: 'ocorrencias',
+        title: 'Ocorrências',
+        type: 'item',
+        url: '/ocorrencias',
+        icon: 'feather icon-sidebar'
+      }
+    ]
+  },
+   
+
+  /*{
     id: 'ui-component',
     title: 'Ui Component',
     type: 'group',
@@ -85,8 +125,9 @@ export const NavigationItems: NavigationItem[] = [
         ]
       }
     ]
-  },
-  {
+      }
+  },*/
+  /*{
     id: 'Authentication',
     title: 'Authentication',
     type: 'group',
@@ -151,8 +192,8 @@ export const NavigationItems: NavigationItem[] = [
         icon: 'feather icon-server'
       }
     ]
-  },
-  {
+  },*/
+ /* {
     id: 'other',
     title: 'Other',
     type: 'group',
@@ -203,5 +244,5 @@ export const NavigationItems: NavigationItem[] = [
         ]
       }
     ]
-  }
+  }*/
 ];

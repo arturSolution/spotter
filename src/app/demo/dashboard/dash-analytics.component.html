@@ -1,5 +1,5 @@
-<div class="row">
-  <!-- order-card start -->
+<div class="row">  
+  <!-- order-card start -->   
   @for (card of cards; track card) {
     <div class="col-md-6 col-xl-3">
       <app-card [hidHeader]="true" cardClass="{{ card.background }} order-card">
@@ -39,7 +39,7 @@
         <app-card [hidHeader]="true">
           <div class="row">
             <div class="col-auto">
-              <span>Customers</span>
+              <span>Clientes</span>
             </div>
             <div class="col text-end">
               <h2 class="mb-0">826</h2>
