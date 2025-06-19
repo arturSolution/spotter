@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
+import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
+import { SharedModule } from 'src/app/theme/shared/shared.module';
 
 @Component({
   selector: 'app-ocorrencia-form',
-  imports: [],
+  imports: [SharedModule, NgbDropdownModule],
   standalone: true,
   templateUrl: './ocorrencia-form.html',
   styleUrl: './ocorrencia-form.scss'
