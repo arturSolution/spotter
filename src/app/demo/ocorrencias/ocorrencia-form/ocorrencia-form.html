@@ -4,30 +4,40 @@
       <app-card cardTitle="Nova Ocorrência" [options]="false">
         <h5>Inserir Nova Ocorrência</h5>
         <hr />
-        <div class="col-12">
-          <label>Tipo de Veículo</label>
-          <select id="tipoVeiculo" name="tipoVeiculo" class="form-select" #tipoVeiculoField required [(ngModel)]="ocorrencia.tipoVeiculo">
-            <option selected></option>
+        <div class="mb-3">
+          <label for="tipoVeiculo" class="form-label">Tipo de Veículo</label>
+          <select
+            id="tipoVeiculo"
+            name="tipoVeiculo"
+            class="form-select"
+            required
+            [(ngModel)]="ocorrencia.tipoVeiculo"
+            #tipoVeiculoField="ngModel"
+          >
+            <option value="" disabled selected>Selecione o tipo</option>
             <option value="1">Carro</option>
             <option value="2">Moto</option>
             <option value="3">Utilitário</option>
           </select>
+          <div *ngIf="tipoVeiculoField.invalid && tipoVeiculoField.touched" class="text-danger">Tipo de veículo é obrigatório.</div>
         </div>
 
-        <div class="col-12">
-          <label for="placa">Placa</label>
-          <div class="input-group">
-            <input
-              id="placa"
-              name="placa"
-              type="text"
-              #placaField="ngModel"
-              required
-              [(ngModel)]="ocorrencia.placa"
-              class="form-control"
-              placeholder="Placa"
-            />
-          </div>
+        <div class="mb-3">
+          <label for="placa" class="form-label">Placa</label>
+          <input
+            id="placa"
+            name="placa"
+            type="text"
+            class="form-control"
+            required
+            minlength="7"
+            maxlength="7"
+            [(ngModel)]="ocorrencia.placa"
+            #placaField="ngModel"
+            placeholder="ABC1234"
+            [disabled]="!!tipoVeiculoField?.invalid"
+          />
+          <div *ngIf="placaField.invalid && placaField.touched" class="text-danger">A placa deve conter exatamente 7 caracteres.</div>
         </div>
 
         <p></p>
@@ -42,6 +52,7 @@
               maxlength="30"
               class="form-control"
               placeholder="Marca"
+              [disabled]="!!tipoVeiculoField?.invalid"
             />
           </div>
         </div>
@@ -57,6 +68,7 @@
               maxlength="30"
               class="form-control"
               placeholder="Modelo"
+              [disabled]="!!tipoVeiculoField?.invalid"
             />
           </div>
         </div>
@@ -64,7 +76,16 @@
         <div class="col-12">
           <label for="cor">Cor</label>
           <div class="input-group">
-            <input id="cor" name="cor" type="text" [(ngModel)]="ocorrencia.cor" maxlength="20" class="form-control" placeholder="Cor" />
+            <input
+              id="cor"
+              name="cor"
+              type="text"
+              [(ngModel)]="ocorrencia.cor"
+              maxlength="20"
+              class="form-control"
+              placeholder="Cor"
+              [disabled]="!!tipoVeiculoField?.invalid"
+            />
           </div>
         </div>
         <p></p>
@@ -72,7 +93,7 @@
         <hr />
         <div layout-fill [ngStyle]="{'color': 'white'}">
           <div fxFlex="100" fxLayout="row" fxLayoutAlign="space-between start">
-            <input type="file" id="file" mat-input multiple (change)="adicionarFoto($event)" />
+            <input type="file" id="file" mat-input (change)="adicionarFoto($event)" />
           </div>
         </div>
         <hr />
@@ -98,7 +119,7 @@
         <div class="row">
           <div class="col-md-10">
             <div class="form-group">
-              <button type="submit" class="btn btn-primary" [disabled]="ocorrenciaForm.invalid">Registrar</button>
+              <button type="submit" class="btn btn-primary" [disabled]="ocorrenciaForm.invalid || fotos.length!=1">Registrar</button>
             </div>
           </div>
         </div>

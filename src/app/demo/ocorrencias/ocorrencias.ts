@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { OcorrenciaService } from '../services/ocorrencia.service';
 
 @Component({
   selector: 'app-ocorrencias',
@@ -8,5 +9,15 @@ import { Component } from '@angular/core';
   styleUrl: './ocorrencias.scss'
 })
 export default class Ocorrencias {
+  ocorrenciaService = inject(OcorrenciaService);
 
+  /**
+   * Realizar implementação da visualização dos cards
+   * com os dados da ocorrenciacom dados da API
+   */
+  constructor() {
+    this.ocorrenciaService.get().subscribe((objetos) => {
+      console.log(objetos); //TODO
+    });
+  }
 }

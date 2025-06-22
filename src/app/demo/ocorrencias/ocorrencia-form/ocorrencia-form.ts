@@ -12,14 +12,14 @@ export interface Foto {
   size?: number;
 }
 
-export interface Ocorrencia {
+export interface OcorrenciaModel {
   id?: number;
   placa: string;
   marca?: string;
   modelo?: string;
   cor?: string;
-  tipoVeiculo: number;
-  foto?: Foto;
+  tipoVeiculo?: number;
+  fotos: Foto[];
 }
 @Component({
   selector: 'app-ocorrencia-form',
@@ -33,10 +33,14 @@ export default class OcorrenciaForm {
   imgResultBeforeCompress = '';
   imgResultAfterCompress = '';
   fotos: Foto[] = [];
-  ocorrencia: Ocorrencia = {
+  ocorrencia: OcorrenciaModel = {
     id: 0,
     placa: '',
-    tipoVeiculo: -1
+    tipoVeiculo: -1,
+    marca: '',
+    modelo: '',
+    cor: '',
+    fotos: this.fotos
   };
 
   //https://parallelum.com.br/fipe/api/v1/carros/marcas apis para obter as marcas de carro
@@ -44,13 +48,17 @@ export default class OcorrenciaForm {
   //https://parallelum.com.br/fipe/api/v1/carros/marcas/{codigoMarca}/modelos apis para obter todos os modelos de carro
 
   addOcorrencia() {
-    // alert('Adicionando ocorrencia');
+    if (this.ocorrencia.fotos.length != 1) {
+      let mensagem = 'Deve existir 1 foto para o envio da ocorrência';
+      alert(mensagem);
+      throw new Error(mensagem);
+    }
+
     console.log(JSON.stringify(this.ocorrencia));
     console.log(JSON.stringify(this.fotos));
   }
 
   adicionarFoto(event: any) {
-    //this.msgErro='';
     for (let i = 0; i < event.target.files.length; i++) {
       const file = event.target.files[i];
       console.clear();
