@@ -32,7 +32,6 @@ export default class OcorrenciaForm {
   ocorrenciaService = inject(OcorrenciaService);
   imgResultBeforeCompress = '';
   imgResultAfterCompress = '';
-  //fotos: Foto[] = [];
   ocorrencia: OcorrenciaModel = {
     id: 0,
     data: new Date(),
@@ -40,12 +39,31 @@ export default class OcorrenciaForm {
     motivo: '',
     foto: ''
   };
+  constructor() {
+    this.novo();
+  }
+
+  novo() {
+    this.ocorrencia = {
+      id: 0,
+      data: new Date(),
+      placa: '',
+      motivo: '',
+      foto: ''
+    };
+  }
 
   salvar() {
     if (this.ocorrencia.foto) {
-      this.ocorrenciaService.insert(this.ocorrencia).subscribe((_) => alert('Ocorrência cadastrada com sucesso.'));
+      let ocorrenciaVO = {
+        placa: this.ocorrencia.placa,
+        motivo: this.ocorrencia.motivo,
+        file: this.ocorrencia.foto
+      };
 
-      //console.log(JSON.stringify(this.ocorrencia));
+      console.log(JSON.stringify(ocorrenciaVO));
+      this.ocorrenciaService.insert(this.ocorrencia).subscribe((_) => alert('Ocorrência cadastrada com sucesso.'));
+      this.novo();
     } else {
       let mensagem = 'Deve existir 1 foto na ocorrência';
       alert(mensagem);

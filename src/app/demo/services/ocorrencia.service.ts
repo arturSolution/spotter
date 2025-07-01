@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { OcorrenciaModel } from '../ocorrencias/ocorrencia-form/ocorrencia-form';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -12,15 +13,19 @@ export class OcorrenciaService {
   constructor() {}
 
   headers = new HttpHeaders({
-    'X-Parse-Application-Id': 'UlpF8UA72zRNnOEIdIq5Vzs1uN7pDwywziD9MhkX',
-    'X-Parse-REST-API-Key': 'AkaF48AsT7JxiaNFPpazg0H3vY5WUL8oknxIO5f1',
+    'X-Parse-Application-Id': '',
+    'X-Parse-REST-API-Key': '',
     'Content-Type': 'application/json'
   });
   public insert(vo: OcorrenciaModel): Observable<any> {
-    return this.http.post('http://localhost:5000/', vo, { headers: this.headers });
+    return this.http.post(`${environment.apiBackEnd}/`, vo, { headers: this.headers });
   }
 
   public get(): Observable<any> {
-    return this.http.get('http://localhost:5000');
+    return this.http.get(`${environment.apiBackEnd}`);
+  }
+
+  public getById(id: number): Observable<any> {
+    return this.http.get(`${environment.apiBackEnd}/${id}`);
   }
 }
