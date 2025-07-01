@@ -1,12 +1,12 @@
-<div class="card-body" (click)="detalhar(ocorrencia)">
-  <h5 class="card-title">Tipo de Ocorrência</h5>
-  <small>Localização da Ocorrência</small>
-  <ul>
-    <li>{{ocorrencia?.placa}}</li>
-    <li>{{ocorrencia?.marca}}</li>
-    <li>{{ocorrencia?.modelo}}</li>
-    <li>{{ocorrencia?.cor}}</li>
-    <li>Descrição</li>
-    <li>Denunciado por denunciante</li>
-  </ul>
+<div id="teste" class="card card-style2" style="border-radius: 50px 50px 20px 20px !important">
+  <div class="card-body" (click)="detalhar(ocorrencia)">
+    <h5 class="card-title">Tipo de Ocorrência</h5>
+    <small>Localização da Ocorrência</small>
+    <ul>
+      <li>{{ocorrencia.placa}}</li>
+      <li>{{ocorrencia.data}}</li>
+      <li>{{ocorrencia.motivo}}</li>
+      <li>{{ocorrencia.foto}}</li>
+    </ul>
+  </div>
 </div>

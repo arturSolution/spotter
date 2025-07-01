@@ -2,26 +2,23 @@ import { Component, inject } from '@angular/core';
 import { OcorrenciaService } from '../services/ocorrencia.service';
 import { OcorrenciaModel } from './ocorrencia-form/ocorrencia-form';
 import { OcorrenciaItem } from './ocorrencia-item/ocorrencia-item';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-ocorrencias',
-  imports: [OcorrenciaItem],
   standalone: true,
+  imports: [CommonModule, OcorrenciaItem],
   templateUrl: './ocorrencias.html',
-  styleUrl: './ocorrencias.scss'
+  styleUrls: ['./ocorrencias.scss'] // ✅ corrigido aqui
 })
 export default class Ocorrencias {
   ocorrenciaService = inject(OcorrenciaService);
-  ocorrencias: OcorrenciaModel[] = [];
+  ocorrencias: OcorrenciaModel[] = []; // opcional: tipar corretamente
 
-  /**
-   * Realizar implementação da visualização dos cards
-   * com os dados da ocorrenciacom dados da API
-   */
   constructor() {
     this.ocorrenciaService.get().subscribe((ocorrenciasList) => {
-      this.ocorrencias = ocorrenciasList;
-      console.log(ocorrenciasList); //TODO
+      this.ocorrencias = ocorrenciasList.results;
+      console.log(ocorrenciasList); // TODO
     });
   }
 }

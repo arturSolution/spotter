@@ -5,24 +5,6 @@
         <h5>Inserir Nova Ocorrência</h5>
         <hr />
         <div class="mb-3">
-          <label for="tipoVeiculo" class="form-label">Tipo de Veículo</label>
-          <select
-            id="tipoVeiculo"
-            name="tipoVeiculo"
-            class="form-select"
-            required
-            [(ngModel)]="ocorrencia.tipoVeiculo"
-            #tipoVeiculoField="ngModel"
-          >
-            <option value="" disabled selected>Selecione o tipo</option>
-            <option value="1">Carro</option>
-            <option value="2">Moto</option>
-            <option value="3">Utilitário</option>
-          </select>
-          <div *ngIf="tipoVeiculoField.invalid && tipoVeiculoField.touched" class="text-danger">Tipo de veículo é obrigatório.</div>
-        </div>
-
-        <div class="mb-3">
           <label for="placa" class="form-label">Placa</label>
           <input
             id="placa"
@@ -35,56 +17,23 @@
             [(ngModel)]="ocorrencia.placa"
             #placaField="ngModel"
             placeholder="ABC1234"
-            [disabled]="!!tipoVeiculoField?.invalid"
           />
           <div *ngIf="placaField.invalid && placaField.touched" class="text-danger">A placa deve conter exatamente 7 caracteres.</div>
         </div>
 
         <p></p>
         <div class="col-12">
-          <label for="marca">Marca</label>
+          <label for="motivo">Motivo</label>
           <div class="input-group">
             <input
-              id="marca"
-              name="marca"
+              id="motivo"
+              name="motivo"
               type="text"
-              [(ngModel)]="ocorrencia.marca"
+              [(ngModel)]="ocorrencia.motivo"
               maxlength="30"
+              #motivoField="ngModel"
               class="form-control"
-              placeholder="Marca"
-              [disabled]="!!tipoVeiculoField?.invalid"
-            />
-          </div>
-        </div>
-        <p></p>
-        <div class="col-12">
-          <label for="modelo">Modelo</label>
-          <div class="input-group">
-            <input
-              id="modelo"
-              name="modelo"
-              type="text"
-              [(ngModel)]="ocorrencia.modelo"
-              maxlength="30"
-              class="form-control"
-              placeholder="Modelo"
-              [disabled]="!!tipoVeiculoField?.invalid"
-            />
-          </div>
-        </div>
-        <p></p>
-        <div class="col-12">
-          <label for="cor">Cor</label>
-          <div class="input-group">
-            <input
-              id="cor"
-              name="cor"
-              type="text"
-              [(ngModel)]="ocorrencia.cor"
-              maxlength="20"
-              class="form-control"
-              placeholder="Cor"
-              [disabled]="!!tipoVeiculoField?.invalid"
+              placeholder="Motivo de Ocorrência"
             />
           </div>
         </div>
@@ -99,11 +48,11 @@
         <hr />
         <div layout-fill [ngStyle]="{'color': 'white'}">
           <div class="container">
-            <div class="row justify-content-md-center" *ngIf="fotos.length>0 else fotosVazias">
-              <div class="col-md-auto" *ngFor="let foto of fotos;">
-                <div class="card" style="width: 250px; height: 250px">
-                  <img [src]="foto.nome" class="card-img-top" />
-                  <button id="btn_excluir" color="danger" class="btn btn-danger" (click)="excluirFoto(foto)">Excluir</button>
+            <div class="row justify-content-md-center">
+              <div class="col-md-auto">
+                <div class="card" style="width: 250px; height: 250px" *ngIf="ocorrencia.foto else fotosVazias">
+                  <img [src]="ocorrencia.foto" class="card-img-top" />
+                  <button id="btn_excluir" color="danger" class="btn btn-danger" (click)="excluirFoto()">Excluir</button>
                 </div>
               </div>
             </div>
@@ -119,7 +68,7 @@
         <div class="row">
           <div class="col-md-10">
             <div class="form-group">
-              <button type="submit" class="btn btn-primary" [disabled]="ocorrenciaForm.invalid || fotos.length!=1">Registrar</button>
+              <button type="submit" class="btn btn-primary" [disabled]="ocorrenciaForm.invalid ">Registrar</button>
             </div>
           </div>
         </div>

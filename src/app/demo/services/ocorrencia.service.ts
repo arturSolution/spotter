@@ -17,10 +17,10 @@ export class OcorrenciaService {
     'Content-Type': 'application/json'
   });
   public insert(vo: OcorrenciaModel): Observable<any> {
-    return this.http.post('https://parseapi.back4app.com/classes/Ocorrencias', vo, { headers: this.headers });
+    return this.http.post('http://localhost:5000/', vo, { headers: this.headers });
   }
 
   public get(): Observable<any> {
-    return this.http.get('https://parseapi.back4app.com/classes/Ocorrencias', { headers: this.headers });
+    return this.http.get('http://localhost:5000');
   }
 }
