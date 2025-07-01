@@ -50,7 +50,7 @@
           <div class="container">
             <div class="row justify-content-md-center">
               <div class="col-md-auto">
-                <div class="card" style="width: 250px; height: 250px" *ngIf="ocorrencia.foto else fotosVazias">
+                <div class="card" style="width: 250px; max-height: 200px" *ngIf="ocorrencia.foto else fotosVazias">
                   <img [src]="ocorrencia.foto" class="card-img-top" />
                   <button id="btn_excluir" color="danger" class="btn btn-danger" (click)="excluirFoto()">Excluir</button>
                 </div>

@@ -69,12 +69,9 @@ export default class OcorrenciaForm {
       alert(mensagem);
       throw new Error(mensagem);
     }
-
-    // console.log(JSON.stringify(this.fotos));
   }
 
   adicionarFoto(event: any) {
-    // for (let i = 0; i < event.target.files.length; i++) {
     const file = event.target.files[0];
     console.clear();
     console.log(file);
@@ -93,9 +90,6 @@ export default class OcorrenciaForm {
             nome: this.imgResultAfterCompress
           };
           this.ocorrencia.foto = foto.nome;
-          //this.fotos.push(foto);
-
-          console.warn('Size in bytes is now:', this.imageCompress.byteCount(result));
         });
       };
 
@@ -105,11 +99,9 @@ export default class OcorrenciaForm {
     } else {
       alert('Foto está acima do limite de 5MB permitida.');
     }
-    // }
   }
 
   excluirFoto() {
     this.ocorrencia.foto = '';
-    // this.fotos = this.fotos.filter((item) => item.nome !== dataItem.nome);
   }
 }
