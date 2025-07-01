@@ -1,6 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
+import { SharedModule } from 'src/app/theme/shared/shared.module';
+import { FuncionarioService } from '../../services/funcionario.service';
 
-export interface Funcionario {
+export interface FuncionarioModel {
   matricula: string;
   nome: string;
   cpf: string;
@@ -9,8 +12,18 @@ export interface Funcionario {
 
 @Component({
   selector: 'app-funcionario-form',
-  imports: [],
+  imports: [SharedModule, NgbDropdownModule],
   templateUrl: './funcionario-form.html',
   styleUrl: './funcionario-form.scss'
 })
-export default class FuncionarioForm {}
+export default class FuncionarioForm {
+  funcionarioService = inject(FuncionarioService);
+  funcionario: FuncionarioModel = {
+    matricula: '',
+    nome: '',
+    cpf: '',
+    telefone: ''
+  };
+
+  addFuncionario() {}
+}
