@@ -62,7 +62,7 @@ export default class OcorrenciaForm {
       };
 
       console.log(JSON.stringify(ocorrenciaVO));
-      this.ocorrenciaService.insert(this.ocorrencia).subscribe((_) => alert('Ocorrência cadastrada com sucesso.'));
+      this.ocorrenciaService.insert(ocorrenciaVO).subscribe((_) => alert('Ocorrência cadastrada com sucesso.'));
       this.novo();
     } else {
       let mensagem = 'Deve existir 1 foto na ocorrência';

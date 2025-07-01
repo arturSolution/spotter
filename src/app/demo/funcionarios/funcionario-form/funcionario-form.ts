@@ -26,6 +26,15 @@ export default class FuncionarioForm {
   };
 
   salvar() {
-    console.log('Funcionário adicionado');
+    let funcionarioVO = {
+      matricula: this.funcionario.matricula,
+      nome: this.funcionario.nome,
+      cpf: this.funcionario.cpf,
+      telefone: this.funcionario.telefone
+    };
+
+    this.funcionarioService.insert(funcionarioVO).subscribe((_) => alert('Funcionário cadastrado com sucesso.'));
+
+    console.log(`Funcionário adicionado: ${JSON.stringify(this.funcionario)}`);
   }
 }

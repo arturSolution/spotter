@@ -17,7 +17,7 @@ export class OcorrenciaService {
     'X-Parse-REST-API-Key': '',
     'Content-Type': 'application/json'
   });
-  public insert(vo: OcorrenciaModel): Observable<any> {
+  public insert(vo: any): Observable<any> {
     return this.http.post(`${environment.apiBackEnd}/`, vo, { headers: this.headers });
   }
 

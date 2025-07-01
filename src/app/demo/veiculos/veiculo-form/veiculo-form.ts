@@ -32,6 +32,17 @@ export default class VeiculoForm {
   };
 
   salvar() {
+    let veiculoVO = {
+      placa: this.veiculo.placa,
+      marca: this.veiculo.marca,
+      modelo: this.veiculo.modelo,
+      cor: this.veiculo.cor,
+      tipo_veiculo: this.veiculo.tipo,
+      matricula: this.veiculo.matricula
+    };
+
+    this.veiculoService.insert(veiculoVO).subscribe((_) => alert('Ocorrência cadastrada com sucesso.'));
+
     console.log(`Veículo adicionado: ${JSON.stringify(this.veiculo)}`);
   }
 }
