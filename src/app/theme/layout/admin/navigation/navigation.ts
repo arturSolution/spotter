@@ -83,14 +83,14 @@ export const NavigationItems: NavigationItem[] = [
         id: 'cad-funcionario',
         title: 'Novo Funcionário',
         type: 'item',
-        url: '/ocorrencia-form',
+        url: '/funcionario-form',
         icon: 'feather icon-file-text'
       },
       {
         id: 'funcionarios',
         title: 'Funcionários',
         type: 'item',
-        url: '/ocorrencias',
+        url: '/funcionarios',
         icon: 'feather icon-sidebar'
       }
     ]
@@ -113,7 +113,7 @@ export const NavigationItems: NavigationItem[] = [
         id: 'veiculos',
         title: 'Veículos',
         type: 'item',
-        url: '/ocorrencias',
+        url: '/veiculos',
         icon: 'feather icon-sidebar'
       }
     ]

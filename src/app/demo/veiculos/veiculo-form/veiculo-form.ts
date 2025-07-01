@@ -6,6 +6,4 @@ import { Component } from '@angular/core';
   templateUrl: './veiculo-form.html',
   styleUrl: './veiculo-form.scss'
 })
-export class VeiculoForm {
-
-}
+export default class VeiculoForm {}

@@ -13,16 +13,8 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: '/analytics',
+        redirectTo: '/ocorrencias',
         pathMatch: 'full'
-      },
-      {
-        path: 'analytics',
-        loadComponent: () => import('./demo/dashboard/dash-analytics.component')
-      },
-      {
-        path: 'importacao',
-        loadComponent: () => import('./demo/importacao-veiculos/importacao-veiculos')
       },
       {
         path: 'ocorrencias',
@@ -32,6 +24,24 @@ const routes: Routes = [
         path: 'ocorrencia-form',
         loadComponent: () => import('./demo/ocorrencias/ocorrencia-form/ocorrencia-form')
       },
+
+      {
+        path: 'veiculos',
+        loadComponent: () => import('./demo/veiculos/veiculos')
+      },
+      {
+        path: 'veiculo-form',
+        loadComponent: () => import('./demo/veiculos/veiculo-form/veiculo-form')
+      },
+
+      {
+        path: 'funcionarios',
+        loadComponent: () => import('./demo/funcionarios/funcionarios')
+      },
+      {
+        path: 'funcionario-form',
+        loadComponent: () => import('./demo/funcionarios/funcionario-form/funcionario-form')
+      }
 
       /*{
         path: 'component',
