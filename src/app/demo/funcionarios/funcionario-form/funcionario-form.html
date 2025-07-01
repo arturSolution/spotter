@@ -1,0 +1,74 @@
+<form #funcionarioForm="ngForm" fxLayout="column" fxLayoutAlign="start stretch" (ngSubmit)="salvar()">
+  <div class="row">
+    <div class="col-sm-12">
+      <app-card cardTitle="Novo Funcionário" [options]="false">
+        <h5>Inserir Novo Funcionário</h5>
+        <hr />
+        <div class="mb-3">
+          <label for="matricula" class="form-label">{{funcionario.matricula}}</label>
+        </div>
+
+        <div class="mb-3">
+          <label for="nome" class="form-label">Nome</label>
+          <input
+            id="nome"
+            name="nome"
+            type="text"
+            class="form-control"
+            required
+            minlength="3"
+            maxlength="60"
+            [(ngModel)]="funcionario.nome"
+            #nomeField="ngModel"
+            placeholder="Digite o nome do funcionário"
+          />
+          <div *ngIf="nomeField.invalid && nomeField.touched" class="text-danger">O nome deve ter entre 3 a 60 caracteres.</div>
+        </div>
+
+        <div class="mb-3">
+          <label for="cpf" class="form-label">Cpf</label>
+          <input
+            id="cpf"
+            name="cpf"
+            type="text"
+            required
+            class="form-control"
+            minlength="14"
+            maxlength="14"
+            [(ngModel)]="funcionario.cpf"
+            #cpfField="ngModel"
+            placeholder="Digite o cpf do funcionário"
+          />
+          <div *ngIf="cpfField.invalid && cpfField.touched" class="text-danger">O cpf deve ter 11 Digitos no formato 000.000.000-00.</div>
+        </div>
+        <p></p>
+        <div class="mb-3">
+          <label for="fone" class="form-label">Telefone</label>
+          <input
+            id="fone"
+            name="fone"
+            type="tel"
+            minlength="8"
+            maxlength="15"
+            required
+            class="form-control"
+            [(ngModel)]="funcionario.telefone"
+            #telefoneField="ngModel"
+            placeholder="Digite o Telefone do Funcionário"
+          />
+          <div *ngIf="telefoneField.invalid && telefoneField.touched" class="text-danger">O telefone deve ter entre 8 a 15 caracteres.</div>
+        </div>
+        <p></p>
+        <hr />
+
+        <div class="row">
+          <div class="col-md-10">
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary" [disabled]="funcionarioForm.invalid ">Registrar</button>
+            </div>
+          </div>
+        </div>
+      </app-card>
+    </div>
+  </div>
+</form>

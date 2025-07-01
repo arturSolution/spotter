@@ -1,26 +1,22 @@
 import { Component, inject } from '@angular/core';
 import { SharedModule } from 'src/app/theme/shared/shared.module';
-import { Importacao } from '../services/importacao';
+import { ImportacaoService } from '../services/importacao.service';
 
 @Component({
   selector: 'app-importacao-veiculos',
   standalone: true,
-  imports: [SharedModule],  
+  imports: [SharedModule],
   templateUrl: './importacao-veiculos.html',
   styleUrls: ['./importacao-veiculos.scss']
 })
 export default class ImportacaoVeiculos {
+  importacaoService = inject(ImportacaoService);
 
-  importacaoService =inject(Importacao)
-  
-  importarDadosVeiculo(){
+  importarDadosVeiculo() {
     console.log('importação de veiculo ocorrido');
   }
 
-
-  exportarDadosVeiculo(){
+  exportarDadosVeiculo() {
     console.log('importação de veiculo ocorrido');
   }
-
-
 }

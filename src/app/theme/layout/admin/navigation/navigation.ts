@@ -19,7 +19,7 @@ export interface NavigationItem {
 }
 
 export const NavigationItems: NavigationItem[] = [
- /* {
+  /* {
     id: 'navigation',
     title: 'Navigation',
     type: 'group',
@@ -34,7 +34,7 @@ export const NavigationItems: NavigationItem[] = [
       }
     ]
   },*/
-  {
+  /*{
     id: 'importtxt',
     title: 'Administrativo',
     type: 'group',
@@ -48,7 +48,7 @@ export const NavigationItems: NavigationItem[] = [
         icon: 'feather icon-server'
       }
     ]
-  },
+  }, */
 
   {
     id: 'ocorrencias',
@@ -72,7 +72,52 @@ export const NavigationItems: NavigationItem[] = [
       }
     ]
   },
-   
+
+  {
+    id: 'funcionarios',
+    title: 'Funcionarios',
+    type: 'group',
+    icon: 'icon-group',
+    children: [
+      {
+        id: 'cad-funcionario',
+        title: 'Novo Funcionário',
+        type: 'item',
+        url: '/funcionario-form',
+        icon: 'feather icon-file-text'
+      },
+      {
+        id: 'funcionarios',
+        title: 'Funcionários',
+        type: 'item',
+        url: '/funcionarios',
+        icon: 'feather icon-sidebar'
+      }
+    ]
+  },
+
+  {
+    id: 'veiculos',
+    title: 'Veículos',
+    type: 'group',
+    icon: 'icon-group',
+    children: [
+      {
+        id: 'cad-veiculo',
+        title: 'Novo Veiculo',
+        type: 'item',
+        url: '/veiculo-form',
+        icon: 'feather icon-file-text'
+      },
+      {
+        id: 'veiculos',
+        title: 'Veículos',
+        type: 'item',
+        url: '/veiculos',
+        icon: 'feather icon-sidebar'
+      }
+    ]
+  }
 
   /*{
     id: 'ui-component',
@@ -193,7 +238,7 @@ export const NavigationItems: NavigationItem[] = [
       }
     ]
   },*/
- /* {
+  /* {
     id: 'other',
     title: 'Other',
     type: 'group',

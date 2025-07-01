@@ -1,0 +1,106 @@
+<form #veiculoForm="ngForm" fxLayout="column" fxLayoutAlign="start stretch" (ngSubmit)="salvar()">
+  <div class="row">
+    <div class="col-sm-12">
+      <app-card cardTitle="Novo Veículo" [options]="false">
+        <h5>Inserir Novo Veículo</h5>
+        <hr />
+        <div class="mb-3">
+          <label for="matricula" class="form-label">Matrícula de Funcionário</label>
+          <input
+            id="matricula"
+            name="matricula"
+            type="text"
+            class="form-control"
+            required
+            minlength="8"
+            maxlength="8"
+            [(ngModel)]="veiculo.matricula"
+            #matriculaField="ngModel"
+            placeholder=""
+          />
+          <div *ngIf="matriculaField.invalid && matriculaField.touched" class="text-danger">
+            A matricula deve conter exatamente 8 caracteres.
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="placa" class="form-label">Placa</label>
+          <input
+            id="placa"
+            name="placa"
+            type="text"
+            class="form-control"
+            required
+            minlength="7"
+            maxlength="7"
+            [(ngModel)]="veiculo.placa"
+            #placaField="ngModel"
+            placeholder="ABC1234"
+          />
+          <div *ngIf="placaField.invalid && placaField.touched" class="text-danger">A placa deve conter exatamente 7 caracteres.</div>
+        </div>
+
+        <div class="mb-3">
+          <label for="marca" class="form-label">Marca</label>
+          <input
+            id="marca"
+            name="marca"
+            type="text"
+            class="form-control"
+            [(ngModel)]="veiculo.marca"
+            #marcaField="ngModel"
+            placeholder="Digite a Marca do Veículo"
+          />
+        </div>
+        <p></p>
+        <div class="mb-3">
+          <label for="modelo" class="form-label">Modelo</label>
+          <input
+            id="modelo"
+            name="modelo"
+            type="text"
+            class="form-control"
+            [(ngModel)]="veiculo.modelo"
+            #modeloField="ngModel"
+            placeholder="Digite o Modelo do Veículo"
+          />
+        </div>
+
+        <p></p>
+        <div class="mb-3">
+          <label for="cor" class="form-label">Cor</label>
+          <input
+            id="cor"
+            name="cor"
+            type="text"
+            class="form-control"
+            [(ngModel)]="veiculo.cor"
+            #corField="ngModel"
+            placeholder="Digite a Cor do Veículo"
+          />
+        </div>
+
+        <p></p>
+        <div class="col-12">
+          <label>Tipo de Veículo</label>
+
+          <select id="tipoVeiculo" name="tipoVeiculo" class="form-select" #tipoVeiculoField required [(ngModel)]="veiculo.tipo">
+            <option selected></option>
+            <option value="carro">Carro</option>
+            <option value="moto">Moto</option>
+          </select>
+        </div>
+        <p></p>
+        <hr />
+
+        <div class="row">
+          <div class="col-md-10">
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary" [disabled]="veiculoForm.invalid ">Registrar</button>
+            </div>
+          </div>
+        </div>
+      </app-card>
+    </div>
+  </div>
+</form>

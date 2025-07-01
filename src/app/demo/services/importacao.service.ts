@@ -5,18 +5,14 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class Importacao {
-
-  http =inject(HttpClient) 
-  
+export class ImportacaoService {
+  http = inject(HttpClient);
 
   public importarDados(dadosVeiculo: any): Observable<any> {
-    
     return this.http.post('', dadosVeiculo);
   }
 
   public processarDados(dadosVeiculo: any): Observable<any> {
-    
     return this.http.post('', dadosVeiculo);
   }
 }
