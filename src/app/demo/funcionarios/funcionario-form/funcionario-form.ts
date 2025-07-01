@@ -25,5 +25,8 @@ export default class FuncionarioForm {
     telefone: ''
   };
 
-  addFuncionario() {}
+  addFuncionario() {
+    console.log('Funcionário adicionado');
+
+  }
 }

@@ -8,7 +8,7 @@ export interface VeiculoModel {
   placa?: string;
   modelo?: string;
   cor?: string;
-  tipo_veiculo: string;
+  tipo: string;
   marca: string;
   matricula: string;
 }
@@ -27,11 +27,11 @@ export default class VeiculoForm {
     marca: '',
     modelo: '',
     matricula: '',
-    tipo_veiculo: '',
+    tipo: '',
     cor: ''
   };
 
-  addVeiculo() {
-    console.log('veiculo ');
+  salvar() {
+    console.log(`Veículo adicionado: ${JSON.stringify(this.veiculo)}`);
   }
 }

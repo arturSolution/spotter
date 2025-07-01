@@ -41,14 +41,12 @@ export default class OcorrenciaForm {
     foto: ''
   };
 
-  addOcorrencia() {
+  salvar() {
     if (this.ocorrencia.foto) {
-    
-      this.ocorrenciaService.insert(this.ocorrencia)
-      .subscribe(_ => alert('Ocorrência cadastrada com sucesso.'))
+      this.ocorrenciaService.insert(this.ocorrencia).subscribe((_) => alert('Ocorrência cadastrada com sucesso.'));
 
       //console.log(JSON.stringify(this.ocorrencia));
-    }else{
+    } else {
       let mensagem = 'Deve existir 1 foto na ocorrência';
       alert(mensagem);
       throw new Error(mensagem);
