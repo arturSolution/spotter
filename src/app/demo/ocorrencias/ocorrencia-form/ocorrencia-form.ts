@@ -53,6 +53,10 @@ export default class OcorrenciaForm {
     };
   }
 
+  enviarOcr() {
+    //this.ocorrenciaService.enviarOCR(ocorrenciaVO).subscribe((_) => alert('Ocorrência cadastrada com sucesso.'));
+  }
+
   salvar() {
     if (this.ocorrencia.foto) {
       let ocorrenciaVO = {
@@ -75,6 +79,7 @@ export default class OcorrenciaForm {
     const file = event.target.files[0];
     console.clear();
     console.log(file);
+    
     if (file.size < 5000000) {
       const reader = new FileReader();
       reader.readAsDataURL(file);
@@ -85,6 +90,7 @@ export default class OcorrenciaForm {
 
         this.imageCompress.compressFile(fotoBase64, DOC_ORIENTATION.Default, 50, 50).then((result) => {
           this.imgResultAfterCompress = result;
+          console.log(result);
 
           const foto: Foto = {
             nome: this.imgResultAfterCompress
