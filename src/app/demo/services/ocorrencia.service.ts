@@ -17,6 +17,11 @@ export class OcorrenciaService {
     'X-Parse-REST-API-Key': '',
     'Content-Type': 'application/json'
   });
+
+  public enviarOCR(file: any): Observable<any> {
+    return this.http.post(`${environment.apiBackEnd}/ocr/easyocr`, file, { headers: this.headers });
+  }
+
   public insert(vo: any): Observable<any> {
     return this.http.post(`${environment.apiBackEnd}/`, vo, { headers: this.headers });
   }
