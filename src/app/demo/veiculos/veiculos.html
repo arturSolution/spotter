@@ -1,1 +1,8 @@
-<p>veiculos works!</p>
+<div class="container">
+  <div class="row justify-content-md-center">
+    <div class="col-md-auto" *ngFor="let veiculo of veiculos">
+      <app-veiculo-item [veiculo]="veiculo"></app-veiculo-item>
+      <p></p>
+    </div>
+  </div>
+</div>
