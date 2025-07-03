@@ -7,8 +7,8 @@ import packageInfo from '../../package.json';
 export const environment = {
   appVersion: packageInfo.version,
   production: false,
-  apiUrl: 'http://localhost:4200',
-  apiBackEnd: 'http://localhost:5000'
+  apiUrl: (window as any)['env']?.apiUrl || 'http://localhost:4200',
+  apiBackEnd: (window as any)['env']?.apiBackEnd || 'http://localhost:5000'
 };
 
 /*
