@@ -25,5 +25,17 @@ COPY --from=build /app/dist/* /usr/share/nginx/html
 # Expor a porta que o Nginx vai rodar
 EXPOSE 80
 
+# Copia o script de entrada para dentro da imagem
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+# Cria um volume/placeholder para o arquivo env.js
+# (opcional — útil se quiser sobrescrever de fora)
+VOLUME ["/usr/share/nginx/html/env.js"]
+
+# Executa o script de entrada quando o container iniciar
+ENTRYPOINT ["/entrypoint.sh"]
+
+
 # Comando para rodar o NGINX em modo foreground
 CMD ["nginx", "-g", "daemon off;"]
