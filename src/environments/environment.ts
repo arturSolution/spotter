@@ -8,7 +8,7 @@ export const environment = {
   appVersion: packageInfo.version,
   production: false,
   apiUrl: (window as any)['env']?.apiUrl || 'http://localhost:4200',
-  apiBackEnd: (window as any)['env']?.apiBackEnd || 'http://localhost:5000'
+  apiBackEnd: (window as any)['env']?.apiBackEnd || 'http://localhost:8000'
 };
 
 /*
