@@ -4,5 +4,5 @@ export const environment = {
   appVersion: packageInfo.version,
   production: true,
   apiUrl: 'http://localhost:4200',
-  apiBackEnd: 'http://localhost:5000'
+  apiBackEnd: 'http://localhost:8000'
 };
