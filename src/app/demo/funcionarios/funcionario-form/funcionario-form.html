@@ -5,7 +5,18 @@
         <h5>Inserir Novo Funcionário</h5>
         <hr />
         <div class="mb-3">
-          <label for="matricula" class="form-label">{{funcionario.matricula}}</label>
+          <label for="nome" class="form-label">Matricula</label>
+          <input
+            id="matricula"
+            name="matricula"
+            type="number"
+            class="form-control"
+            required            
+            [(ngModel)]="funcionario.matricula"
+            #matriculaField="ngModel"
+            placeholder="Digite a matricula do funcionário"
+          />
+          <div *ngIf="matriculaField.invalid && matriculaField.touched" class="text-danger">A matricula é um campo obrigatório.</div>
         </div>
 
         <div class="mb-3">
@@ -31,15 +42,21 @@
             id="cpf"
             name="cpf"
             type="text"
+            minlength="11"
+            maxlength="11"
             required
-            class="form-control"
-            minlength="14"
-            maxlength="14"
+            class="form-control"            
             [(ngModel)]="funcionario.cpf"
             #cpfField="ngModel"
             placeholder="Digite o cpf do funcionário"
           />
-          <div *ngIf="cpfField.invalid && cpfField.touched" class="text-danger">O cpf deve ter 11 Digitos no formato 000.000.000-00.</div>
+          <div *ngIf="cpfField.touched && cpfField.errors" class="text-danger">
+            <div *ngIf="cpfField.errors?.['required']">O CPF é obrigatório.</div>
+            <div *ngIf="cpfField.errors?.['minlength'] || cpfField.errors?.['maxlength']">
+              O CPF deve ter exatamente 11 dígitos.
+            </div>
+            <div *ngIf="cpfField.errors?.['pattern']">O CPF deve conter apenas números.</div>
+          </div>
         </div>
         <p></p>
         <div class="mb-3">
