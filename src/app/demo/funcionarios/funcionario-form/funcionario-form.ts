@@ -25,6 +25,17 @@ export default class FuncionarioForm {
     telefone: ''
   };
 
+  novo() {
+
+    this.funcionario = { 
+      matricula: '',
+      cpf: '',
+      nome: '',
+      telefone: ''
+
+    }
+  }
+
   salvar() {
     let funcionarioVO = {
       matricula: this.funcionario.matricula,
@@ -32,9 +43,20 @@ export default class FuncionarioForm {
       cpf: this.funcionario.cpf,
       telefone: this.funcionario.telefone
     };
+    
+    console.log(`Funcionário adicionado: ${JSON.stringify(funcionarioVO)}`);
+    this.funcionarioService.insert(funcionarioVO).subscribe(
+      _ => {        
+        
+        alert('Funcionário cadastrado com sucesso.')
+        this.novo();
+      }   
+    , error => {
+        console.error(error)
+        alert(`Erro, ocorreu um erro`)
 
-    this.funcionarioService.insert(funcionarioVO).subscribe((_) => alert('Funcionário cadastrado com sucesso.'));
-
-    console.log(`Funcionário adicionado: ${JSON.stringify(this.funcionario)}`);
+      });
+        
+  
   }
 }
