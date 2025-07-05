@@ -1,1 +1,65 @@
-<p>veiculos works!</p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-header">
+          <h5>Lista de Veículos</h5>
+          <div class="card-header-right">
+            <button class="btn btn-primary" (click)="adicionarVeiculo()">
+              <i class="fa fa-plus"></i>
+              Adicionar Veículo
+            </button>
+          </div>
+        </div>
+        <div class="card-body">
+          <!-- Loading -->
+          <div *ngIf="loading" class="text-center">
+            <div class="spinner-border" role="status">
+              <span class="sr-only">Carregando...</span>
+            </div>
+            <p>Carregando veículos...</p>
+          </div>
+
+          <!-- Error -->
+          <div *ngIf="error" class="alert alert-danger">
+            {{ error }}
+            <button class="btn btn-sm btn-outline-danger ml-2" (click)="carregarVeiculos()">Tentar Novamente</button>
+          </div>
+
+          <!-- Lista de veículos -->
+          <div *ngIf="!loading && !error">
+            <div *ngIf="veiculos.length === 0" class="alert alert-info">Nenhum veículo cadastrado.</div>
+
+            <div *ngIf="veiculos.length > 0" class="table-responsive">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>Placa</th>
+                    <th>Modelo</th>
+                    <th>Cor</th>
+                    <th>Ações</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let veiculo of veiculos">
+                    <td>{{ veiculo.placa }}</td>
+                    <td>{{ veiculo.modelo }}</td>
+                    <td>{{ veiculo.cor }}</td>
+                    <td>
+                      <button class="btn btn-sm btn-outline-primary mr-1" (click)="editarVeiculo(veiculo)" title="Editar">
+                        <i class="fa fa-edit"></i>
+                      </button>
+                      <button class="btn btn-sm btn-outline-danger" (click)="excluirVeiculo(veiculo)" title="Excluir">
+                        <i class="fa fa-trash"></i>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

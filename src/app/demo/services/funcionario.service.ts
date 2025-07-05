@@ -23,6 +23,22 @@ export class FuncionarioService {
   }
 
   public get(): Observable<any> {
-    return this.http.get(`${environment.apiBackEnd}${this.rota}`);
+    return this.http.get(`${environment.apiBackEnd}${this.rota}`, { headers: this.headers });
+  }
+
+  public listarFuncionarios(): Observable<any> {
+    return this.http.get(`${environment.apiBackEnd}${this.rota}`, { headers: this.headers });
+  }
+
+  public getById(id: string): Observable<any> {
+    return this.http.get(`${environment.apiBackEnd}${this.rota}${id}`, { headers: this.headers });
+  }
+
+  public update(id: string, vo: any): Observable<any> {
+    return this.http.put(`${environment.apiBackEnd}${this.rota}${id}`, vo, { headers: this.headers });
+  }
+
+  public delete(id: string): Observable<any> {
+    return this.http.delete(`${environment.apiBackEnd}${this.rota}${id}`, { headers: this.headers });
   }
 }

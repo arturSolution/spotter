@@ -1,0 +1,129 @@
+// Área de upload
+.upload-area {
+  border: 2px dashed #007bff;
+  border-radius: 8px;
+  padding: 2rem;
+  text-align: center;
+  background-color: #f8f9fa;
+  transition: all 0.3s ease;
+  margin-bottom: 1rem;
+}
+
+.upload-area:hover {
+  border-color: #0056b3;
+  background-color: #e9ecef;
+}
+
+.upload-area.upload-disabled {
+  border-color: #6c757d;
+  background-color: #e9ecef;
+  opacity: 0.6;
+}
+
+.upload-help-text {
+  color: #6c757d;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+.upload-help-text i {
+  font-size: 1.2rem;
+  margin-right: 0.5rem;
+  color: #007bff;
+}
+
+// Preview da foto
+.foto-preview {
+  position: relative;
+  display: inline-block;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.preview-image {
+  max-width: 300px;
+  max-height: 200px;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+}
+
+.preview-delete {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  padding: 4px 8px;
+  font-size: 0.75rem;
+}
+
+// Campos desabilitados
+.form-control:disabled {
+  background-color: #f8f9fa;
+  opacity: 0.7;
+}
+
+// Labels numeradas
+.form-label strong {
+  color: #495057;
+  font-weight: 600;
+}
+
+// Botão principal
+.btn-lg {
+  padding: 0.75rem 2rem;
+  font-size: 1.1rem;
+}
+
+// Mensagens de ajuda
+.form-text {
+  font-size: 0.8rem;
+}
+
+.form-text i {
+  margin-right: 0.25rem;
+}
+
+// Alert personalizado
+.alert-info {
+  border-left: 4px solid #007bff;
+  background-color: #f8f9fa;
+  border-color: #dee2e6;
+}
+
+.alert-info i {
+  color: #007bff;
+  margin-right: 0.5rem;
+}
+
+.alert-warning {
+  border-left: 4px solid #ffc107;
+  background-color: #fff3cd;
+  border-color: #ffeaa7;
+  color: #856404;
+}
+
+.alert-warning i {
+  color: #ffc107;
+  margin-right: 0.5rem;
+}
+
+.alert-warning strong {
+  color: #856404;
+}
+
+// Responsividade
+@media (max-width: 768px) {
+  .upload-area {
+    padding: 1.5rem;
+  }
+
+  .preview-image {
+    max-width: 100%;
+  }
+
+  .btn-lg {
+    width: 100%;
+  }
+}

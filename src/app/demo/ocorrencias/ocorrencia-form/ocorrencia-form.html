@@ -4,26 +4,97 @@
       <app-card cardTitle="Nova Ocorrência" [options]="false">
         <h5>Inserir Nova Ocorrência</h5>
         <hr />
-        <div class="mb-3">
-          <label for="placa" class="form-label">Placa</label>
-          <input
-            id="placa"
-            name="placa"
-            type="text"
-            class="form-control"
-            required
-            minlength="7"
-            maxlength="7"
-            [(ngModel)]="ocorrencia.placa"
-            #placaField="ngModel"
-            placeholder="ABC1234"
-          />
-          <div *ngIf="placaField.invalid && placaField.touched" class="text-danger">A placa deve conter exatamente 7 caracteres.</div>
+
+        <!-- Seção de upload de arquivo movida para o topo -->
+        <div class="mb-4">
+          <label for="file" class="form-label">
+            <strong>1. Carregar Foto da Ocorrência</strong>
+            <span *ngIf="ocrLoading" class="text-primary ml-2">
+              <i class="fa fa-spinner fa-spin"></i>
+              Processando imagem...
+            </span>
+          </label>
+          <div class="upload-area" [class.upload-disabled]="ocrLoading">
+            <input
+              type="file"
+              id="file"
+              class="form-control-file"
+              (change)="adicionarFoto($event)"
+              [disabled]="ocrLoading"
+              accept="image/*"
+            />
+            <div class="upload-help-text">
+              <i class="fa fa-camera"></i>
+              Selecione uma imagem da ocorrência (máx. 5MB)
+            </div>
+          </div>
         </div>
 
-        <p></p>
-        <div class="col-12">
-          <label for="motivo">Motivo</label>
+        <!-- Preview da foto -->
+        <div class="mb-4" *ngIf="ocorrencia.foto">
+          <div class="foto-preview">
+            <img [src]="ocorrencia.foto" class="preview-image" alt="Preview da foto" />
+            <button type="button" class="btn btn-sm btn-danger preview-delete" (click)="excluirFoto()">
+              <i class="fa fa-trash"></i>
+              Remover
+            </button>
+          </div>
+        </div>
+
+        <hr />
+
+        <!-- Campos desabilitados até carregar a foto -->
+        <div class="mb-3">
+          <label for="placa" class="form-label">
+            <strong>2. Placa do Veículo</strong>
+            <span *ngIf="ocrLoading" class="text-primary ml-2">
+              <i class="fa fa-spinner fa-spin"></i>
+              Detectando placa...
+            </span>
+          </label>
+          <div class="input-group">
+            <input
+              id="placa"
+              name="placa"
+              type="text"
+              class="form-control"
+              required
+              minlength="7"
+              maxlength="7"
+              [(ngModel)]="ocorrencia.placa"
+              #placaField="ngModel"
+              placeholder="ABC1234"
+              [disabled]="!ocorrencia.foto || ocrLoading"
+            />
+            <div *ngIf="ocrLoading" class="input-group-append">
+              <span class="input-group-text">
+                <i class="fa fa-spinner fa-spin text-primary"></i>
+              </span>
+            </div>
+          </div>
+          <div *ngIf="placaField.invalid && placaField.touched" class="text-danger">A placa deve conter exatamente 7 caracteres.</div>
+          <small class="form-text text-muted" *ngIf="!ocorrencia.foto">
+            <i class="fa fa-info-circle"></i>
+            Carregue uma foto primeiro para habilitar este campo
+          </small>
+
+          <!-- Mensagem de verificação da placa -->
+          <div *ngIf="ocorrencia.placa && ocorrencia.foto && !ocrLoading" class="alert alert-warning mt-2">
+            <i class="fa fa-exclamation-triangle"></i>
+            <strong>Verifique a placa!</strong>
+            <br />
+            Confira se a placa
+            <strong>"{{ ocorrencia.placa }}"</strong>
+            está correta comparando com a imagem carregada.
+            <br />
+            <small>Se necessário, corrija manualmente no campo acima.</small>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="motivo" class="form-label">
+            <strong>3. Motivo da Ocorrência</strong>
+          </label>
           <div class="input-group">
             <input
               id="motivo"
@@ -34,41 +105,32 @@
               #motivoField="ngModel"
               class="form-control"
               placeholder="Motivo de Ocorrência"
+              [disabled]="!ocorrencia.foto"
             />
           </div>
-        </div>
-        <p></p>
-
-        <hr />
-        <div layout-fill [ngStyle]="{'color': 'white'}">
-          <div fxFlex="100" fxLayout="row" fxLayoutAlign="space-between start">
-            <input type="file" id="file" mat-input (change)="adicionarFoto($event)" />
-          </div>
-        </div>
-        <hr />
-        <div layout-fill [ngStyle]="{'color': 'white'}">
-          <div class="container">
-            <div class="row justify-content-md-center">
-              <div class="col-md-auto">
-                <div class="card" style="width: 250px; max-height: 200px" *ngIf="ocorrencia.foto else fotosVazias">
-                  <img [src]="ocorrencia.foto" class="card-img-top" />
-                  <button id="btn_excluir" color="danger" class="btn btn-danger" (click)="excluirFoto()">Excluir</button>
-                </div>
-              </div>
-            </div>
-          </div>
+          <small class="form-text text-muted" *ngIf="!ocorrencia.foto">
+            <i class="fa fa-info-circle"></i>
+            Carregue uma foto primeiro para habilitar este campo
+          </small>
         </div>
 
-        <ng-template #fotosVazias>
-          <div layout-fill class="row justify-content-md-center" style="max-width: 150px">
-            <span>Ainda não existem fotos adicionadas</span>
-          </div>
-        </ng-template>
+        <!-- Mensagem quando não há foto -->
+        <div class="alert alert-info" *ngIf="!ocorrencia.foto">
+          <i class="fa fa-info-circle"></i>
+          <strong>Para continuar:</strong>
+          Carregue primeiro uma foto da ocorrência usando o botão acima.
+        </div>
+
+        <hr />
 
         <div class="row">
-          <div class="col-md-10">
+          <div class="col-md-12">
             <div class="form-group">
-              <button type="submit" class="btn btn-primary" [disabled]="ocorrenciaForm.invalid ">Registrar</button>
+              <button type="submit" class="btn btn-primary btn-lg" [disabled]="ocorrenciaForm.invalid || !ocorrencia.foto || ocrLoading">
+                <i class="fa fa-save"></i>
+                <span *ngIf="!ocrLoading">Registrar Ocorrência</span>
+                <span *ngIf="ocrLoading">Processando...</span>
+              </button>
             </div>
           </div>
         </div>
