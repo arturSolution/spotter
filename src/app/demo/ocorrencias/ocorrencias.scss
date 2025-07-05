@@ -1,0 +1,56 @@
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.table-responsive {
+  margin-top: 1rem;
+}
+
+.btn {
+  margin-right: 0.25rem;
+}
+
+.btn:last-child {
+  margin-right: 0;
+}
+
+.spinner-border {
+  margin-bottom: 1rem;
+}
+
+.alert {
+  margin-top: 1rem;
+}
+
+.card-body {
+  min-height: 200px;
+}
+
+.badge {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+}
+
+.badge-success {
+  background-color: #28a745;
+  color: white;
+}
+
+.badge-warning {
+  background-color: #ffc107;
+  color: #212529;
+}
+
+.foto-clicavel {
+  text-decoration: none !important;
+  transition: all 0.2s ease;
+  display: inline-block;
+}
+
+.foto-clicavel:hover {
+  background-color: #218838 !important;
+  color: white !important;
+  transform: scale(1.05);
+}

@@ -1,0 +1,29 @@
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.table-responsive {
+  margin-top: 1rem;
+}
+
+.btn {
+  margin-right: 0.25rem;
+}
+
+.btn:last-child {
+  margin-right: 0;
+}
+
+.spinner-border {
+  margin-bottom: 1rem;
+}
+
+.alert {
+  margin-top: 1rem;
+}
+
+.card-body {
+  min-height: 200px;
+}
